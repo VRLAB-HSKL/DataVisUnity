@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - bigScatterplot
+  - InfoText
+  - TrackerObjectContainer
+  - Scatterplots
+  - VROrigin
+  - DataDropdown
+  - Visualizer
+  - ScatterplotDropdown
+  - ScatterplotMatrix
+  - start
+  - Y Axis Label
+  - Scatterplot
+  - X Axis Label
+  - Z Axis Label
+  - DataPoint
+  - Attribute2
+  - Attribute3
+  - Attribute1
+  - FirstPersonCamera
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - PostProcessing
+  - bigScatterplot
+  - DataDropdwon
+  - ScatterplotDropdown
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
