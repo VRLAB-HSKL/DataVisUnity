@@ -10,8 +10,8 @@ public class InteractionController : MonoBehaviour
     , IColliderEventHoverExitHandler
 
 {
-
     public UnityEvent onToggleSelection;
+    public UnityEvent onToggleError;
     bool inCollider = false;
 
     public void OnColliderEventHoverEnter(ColliderHoverEventData eventData)
@@ -26,10 +26,15 @@ public class InteractionController : MonoBehaviour
 
     void Update()
     {
-        if (ViveInput.GetPressDown(HandRole.LeftHand, ControllerButton.Menu) && inCollider)
+        if (ViveInput.GetPressDown(HandRole.LeftHand, ControllerButton.Pad) && inCollider)
         {
-            Debug.Log("Menu");
+            Debug.Log("DPadRight onToggleSelection");
             onToggleSelection.Invoke();
+        }
+        if (ViveInput.GetPressDown(HandRole.RightHand, ControllerButton.Pad) && inCollider)
+        {
+            Debug.Log("DPadLeft onToggleError");
+            onToggleError.Invoke();
         }
     }
 }

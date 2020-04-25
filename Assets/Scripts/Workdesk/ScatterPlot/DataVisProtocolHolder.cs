@@ -46,9 +46,9 @@ public class DataVisProtocolHolder
                 plotData.CategorieColors = protocol.colors.colorList;
                 plotData.CategorieColumn = protocol.colors.column;
             }
-            if(!(protocol.selected is null))
+            if(!(protocol.selection is null))
             {
-                plotData.SelectedAsset = protocol.selected;
+                plotData.Selection = protocol.selection;
             }
             if (!(protocol.classification))
             {

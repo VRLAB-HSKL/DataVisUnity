@@ -73,8 +73,8 @@ public class DataVisProtocolLoader : MonoBehaviour
             {
                 DataVisProtocol protocol = JsonConvert.DeserializeObject<DataVisProtocol>(fileContent);
                 TextAsset csvAsset = new TextAsset(protocol.dataset.ToString());
-                List<int> selectedAsset = new List<int>(protocol.selected);
-                PlotData plotData = new PlotData(fileName,csvAsset,selectedAsset);
+                DataVisSelection selection = protocol.selection;
+                PlotData plotData = new PlotData(fileName,csvAsset,selection);
                 plotData.CategorieColors = protocol.colors.colorList;
                 plotData.CategorieColumn = protocol.colors.column;
             }
@@ -125,14 +125,11 @@ public class DataVisProtocolLoader : MonoBehaviour
             {
                 //Debug.Log(req.downloadHandler.text);
                 //JUST PUT DATA SOMEWHERE
-                Debug.Log("Test");
-                Debug.Log(req.downloadHandler.text);
                 string foldername = "Kommentare";
                 string name = "test";
                 string extension = ".html";
                 var urltest = Application.persistentDataPath + "/" + foldername + "/" + name + extension;
                 var fileurl = "file:///" + urltest;
-                Debug.Log(urltest);
                 //FileStream file = File.Open(urltest, FileMode.OpenOrCreate, FileAccess.ReadWrite);
                 File.WriteAllText(urltest, String.Empty);
                 TextWriter tw = new StreamWriter(urltest, true);

@@ -21,13 +21,11 @@ public class UIConfusionMatrixGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        Debug.LogError("Awake Matrix");
         //matrixCellPrefab = (GameObject)Resources.Load("Prefabs/MatrixCell", typeof(GameObject));
     }
 
     public void setMatrixValues(DataVisConfusionMatrix confusionMatrix)
     {
-        Debug.LogError("Length   " + confusionMatrix.labels.Count);
         if (confusionMatrix.data.Length != 0)
         {
             this.confusionMatrixData = confusionMatrix.data;

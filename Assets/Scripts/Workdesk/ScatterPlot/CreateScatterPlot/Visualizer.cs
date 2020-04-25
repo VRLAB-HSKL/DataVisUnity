@@ -142,7 +142,11 @@ public class Visualizer : MonoBehaviour
             fillClipboard(plotData.CsvAsset.name);
             dataSource.data = plotData.CsvAsset;
             //fill selectedlist
-            dataSource.selectedIndicies = plotData.SelectedAsset;
+            dataSource.selectedIndicies = plotData.Selection.data;
+            //fill resultList
+            dataSource.results = plotData.Classification.result.ToList();
+            dataSource.resultColor = plotData.Classification.resultErrorColor;
+            dataSource.selectionColor = plotData.Selection.color;
         }
         else
         {

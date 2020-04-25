@@ -164,11 +164,52 @@ public class DataPoint : MonoBehaviour
             Renderer renderer = this.GetComponent<Renderer>();
             if (dataSource.selectedIndicies.Contains(index))
             {
-                color = Color.black;
-                renderer.material.color = color;
+                Debug.LogError(dataSource.selectionColor);
+                if (dataSource.selectionColor != null)
+                {
+                    color = Utilities.HexToColor(dataSource.selectionColor);
+                    renderer.material.color = color;
+                }
+                else
+                {
+                    color = Color.black;
+                    renderer.material.color = color;
+                }
             }
         }
     }
+
+    public void colorError(CSVDataSource dataSource)
+    {
+        int columnindex = 0;
+
+        int j = 0;
+        foreach (var column in dataSource)
+        {
+            if (column.Identifier.Equals(dataSource.categorieColumn))
+            {
+                columnindex = j;
+            }
+            // dann möchte ich den index und befülle diesen index dann unten
+            j++;
+        }
+         
+         if (!(dataSource.results[index].Equals(dataSource.getOriginalValue(dataSource[columnindex].Data[index], dataSource[columnindex].Identifier).ToString())))
+            {
+                Renderer renderer = this.GetComponent<Renderer>();
+                if (dataSource.resultColor != null)
+                {
+                    color = Utilities.HexToColor(dataSource.resultColor);
+                    renderer.material.color = color;
+                }
+                else
+                {
+                    color = Color.black;
+                    renderer.material.color = color;
+                }
+            }
+     }
+  
 
     /// <summary>
     /// Methode färbt die Datenpunkte.
@@ -205,7 +246,6 @@ public class DataPoint : MonoBehaviour
             {
                 for (int i = 0; i < categorie.Count; i += 2)
                 {
-                  //  Debug.LogError(dataSource.getOriginalValue(dataSource[columnindex].Data[index], dataSource[columnindex].Identifier).ToString());
                     if (categorie[i].Equals(dataSource.getOriginalValue(dataSource[columnindex].Data[index], dataSource[columnindex].Identifier).ToString()))
                     {
                         

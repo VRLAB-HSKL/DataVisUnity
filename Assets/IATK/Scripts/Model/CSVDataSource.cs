@@ -18,6 +18,9 @@ namespace IATK
 
         //Morsch
         public List<int> selectedIndicies;
+        public string selectionColor;
+        public List<string> results;
+        public string resultColor;
         public List<List<string>> categorieColors;
         public string categorieColumn;
 

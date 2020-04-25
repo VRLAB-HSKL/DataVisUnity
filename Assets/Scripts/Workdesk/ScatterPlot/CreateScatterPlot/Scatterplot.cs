@@ -154,4 +154,24 @@ public class Scatterplot : MonoBehaviour
         colorToggle = !colorToggle;
     }
 
+    public bool colorErrorToggle = false;
+
+    public void ToggleDataPointErrorColor()
+    {
+        foreach (DataPoint point in dataPoints)
+        {
+            if (colorErrorToggle)
+            {
+                point.colorPoint(dataSource);
+                Debug.Log("Normal");
+            }
+            else
+            {
+                point.colorError(dataSource);
+                Debug.Log("ColorError");
+            }
+        }
+        colorErrorToggle = !colorErrorToggle;
+    }
+
 }

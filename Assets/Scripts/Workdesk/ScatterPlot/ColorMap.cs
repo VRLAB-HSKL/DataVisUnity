@@ -26,7 +26,6 @@ public class ColorMap: MonoBehaviour
     {
         if (gradientSet)
         {
-            Debug.LogError(value + "    farbe" + g.Evaluate(value).r + " " + g.Evaluate(value).g + " " + g.Evaluate(value).b);
             return g.Evaluate(value);
         }
         else

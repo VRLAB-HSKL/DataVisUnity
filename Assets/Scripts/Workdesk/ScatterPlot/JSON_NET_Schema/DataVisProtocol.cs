@@ -11,7 +11,7 @@ public class DataVisProtocol
     public string name;
     public ExportCsv dataset;
     public DataVisColors colors;
-    public List<int> selected;
+    public DataVisSelection selection;
     public string _id;
     public List<Comment> comments;
     public DataVisClassification classification;
