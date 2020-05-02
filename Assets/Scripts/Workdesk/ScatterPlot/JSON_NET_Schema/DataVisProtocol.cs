@@ -8,11 +8,11 @@ using System;
 [Serializable]
 public class DataVisProtocol
 {
+    public string _id;
     public string name;
-    public ExportCsv dataset;
+    public DataVisDataSet dataset;
     public DataVisColors colors;
     public DataVisSelection selection;
-    public string _id;
-    public List<Comment> comments;
+    public List<DataVisCommet> comments;
     public DataVisClassification classification;
 }

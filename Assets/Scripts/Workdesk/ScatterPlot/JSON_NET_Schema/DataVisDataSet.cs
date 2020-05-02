@@ -5,7 +5,7 @@ using System;
 using System.Text;
 
 [Serializable]
-public class ExportCsv
+public class DataVisDataSet
 {
     public string test;
     public List<string> columns;

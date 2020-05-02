@@ -6,7 +6,7 @@ public class ColorMap: MonoBehaviour
 {
     static Gradient g = new Gradient();
     static bool gradientSet = false;
-    public static void setGradient(Color32 startColor, Color32 endColor, float startValue, float endValue)
+    public static void setGradient(Color32 startColor, Color32 endColor)
     {
         gradientSet = true;
         GradientColorKey[] gck = new GradientColorKey[2];

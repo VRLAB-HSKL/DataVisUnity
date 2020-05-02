@@ -30,7 +30,7 @@ public class UIConfusionMatrixGenerator : MonoBehaviour
         {
             this.confusionMatrixData = confusionMatrix.data;
             this.labels = confusionMatrix.labels;
-            ColorMap.setGradient(startColor, endColor, 1, 2);
+            ColorMap.setGradient(startColor, endColor);
             float[] flattConfusionMatrix = confusionMatrix.data.SelectMany(x => x).ToArray();
             maxValue = flattConfusionMatrix.Max();
             //maxValue = confusionMatrix.Cast<float>().Max();

@@ -129,14 +129,14 @@ public class DataVisProtocolLoader : MonoBehaviour
                 string name = "test";
                 string extension = ".html";
                 var urltest = Application.persistentDataPath + "/" + foldername + "/" + name + extension;
-                var fileurl = "file:///" + urltest;
+                var path = "file:///" + urltest;
                 //FileStream file = File.Open(urltest, FileMode.OpenOrCreate, FileAccess.ReadWrite);
                 File.WriteAllText(urltest, String.Empty);
                 TextWriter tw = new StreamWriter(urltest, true);
                 tw.WriteLine(req.downloadHandler.text);
                 tw.Close();
                 WebBrowser browser = GameObject.Find("InworldBrowser").GetComponent<WebBrowser>();
-                browser.OpenCommentFile(fileurl);
+                browser.OpenCommentFile(path);
             }
         }));
     }

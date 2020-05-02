@@ -130,7 +130,7 @@ public class Visualizer : MonoBehaviour
     /// Lädt die ausgewählte CSV-Datei.
     /// </summary>
     /// <param name="dataFile"></param>
-    public void LoadDataSource2(PlotData plotData)
+    public void LoadDataWithPlotData(PlotData plotData)
     {
         if (null != plotData.CsvAsset)
         {
@@ -221,7 +221,7 @@ public class Visualizer : MonoBehaviour
     public void createInitialScatterPlot(PlotData plotData)
     {
         selectedScatterplot = 0;
-        LoadDataSource2(plotData);
+        LoadDataWithPlotData(plotData);
         int size = possibleScatterplots.GetLength(0);
         //Debug.Log("GetLength: Own" + possibleScatterplots.GetLength(0));
         int[] temp = new int[size];
