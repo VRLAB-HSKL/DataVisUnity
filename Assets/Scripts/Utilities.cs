@@ -5,30 +5,40 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class Utilities : MonoBehaviour
 {
 
     public static string GET_SELECTED_PROTOCOLS_PATH = "/DataVis//protocols/selected";
     public static string GET_ALL_PROTOCOLS_PATH = "/DataVis/protocols";
 
+    /// <summary>
+    /// Methode generiert die aus der baseurl, port und endpointPath eine URL und gibt diese als string zurück
+    /// </summary>
     public static string generateURLForAPICall(string baseurl, string port, string endpointPath)
     {
         string url = baseurl + ":" + port + endpointPath;
         return url;
     }
-
+    /// <summary>
+    /// Methode konvertiert Liste in ein Array
+    /// </summary>
     public static object[] convertListToArray(List<object> list)
     {
         object[] array;
         array = list.ToArray();
         return array;
     }
-
+    /// <summary>
+    /// Methode gibt den Szenennamen zurück
+    /// </summary>
     public static string getSceneAsString()
     {
         return SceneManager.GetActiveScene().name;
     }
-
+    /// <summary>
+    /// Methode gibt Inahlt einer Datei im StreamingAsset ordner als string zurück
+    /// </summary>
     public static string readFileFromStreaminAssets(string fileName)
     {
         string filePath = Path.Combine(Application.streamingAssetsPath, fileName);
@@ -43,7 +53,9 @@ public class Utilities : MonoBehaviour
             return null;
         }
     }
-
+    /// <summary>
+    /// Methode konvertiert einen Hex-Wert in eine Color und gibt diese zurück-
+    /// </summary>
     public static Color HexToColor(string hex)
     {
         byte r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
@@ -52,8 +64,9 @@ public class Utilities : MonoBehaviour
         return new Color32(r, g, b, 255);
     }
 
-
-    /* Methode liefert CommandLine Befehle zurück, die nach einem Bestimmt Command folgen */
+    /// <summary>
+    /// Methode liefert CommandLineBefehle zurück, die nach einem Bestimmt Command folgen
+    /// </summary>
     public static string getCommandLineArgs(string name)
     {
         var args = Environment.GetCommandLineArgs();
@@ -66,7 +79,9 @@ public class Utilities : MonoBehaviour
         }
         return null;
     }
-
+    /// <summary>
+    /// Methode berechnet Prozentsatz
+    /// </summary>
     public static float prozentsatz(float grundwert, float prozentwert)
     {
         return (100 / grundwert) * prozentwert;

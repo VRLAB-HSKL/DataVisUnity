@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//Datatype containing the main csv and selectiondata
+
 public class PlotData
 {
     //contains csv as TextAsset (string)
@@ -25,7 +25,7 @@ public class PlotData
     
     public DataVisClassification Classification { get => classification; set => classification = value; }
 
-    //contructors
+    //Konstruktoren
     public PlotData()
     {
 

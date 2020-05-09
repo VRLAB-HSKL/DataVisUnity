@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// Diese Klasse ist der Start der Anwendung. Sie erstellt Scatterplots, befüllt die Anzigen und das Clipboard.
+/// </summary>
 public class DataVisController : MonoBehaviour
 {
     [SerializeField] public string baseurl = "localhost";
@@ -19,37 +21,51 @@ public class DataVisController : MonoBehaviour
         plotClipBoardController = (new GameObject("PlotClipBoardController")).AddComponent<PlotClipBoardController>();
         whiteboardValueLoader = GameObject.Find("WhiteBoard").GetComponent<WhiteboardValueLoader>();
         visualizer = GameObject.FindGameObjectWithTag("Visualizer").GetComponent<Visualizer>();
-        //Loads data platform independent
+        // Startet die Anfrage zur Schnittstelle
         fileLoader.platformIndependentProtocolLoading(Utilities.generateURLForAPICall(baseurl, port, Utilities.GET_SELECTED_PROTOCOLS_PATH));
-        //
-        DataVisProtocolLoader.onLoadRdy += this.updateVisAndDropDown;
+        DataVisProtocolLoader.onLoadRdy += this.updateVisAndDisplays;
     }
 
-    //Start will fill the data generated in Awake into the dropdown and will show the first scatterplot in the scene
+    
     void Start()
     {
-        updateVisAndDropDown();
+        updateVisAndDisplays();
     }
 
+    /// <summary>
+    /// Methode lädt neu ausgewählte Protokolle von der Schnittstelle
+    /// Wird vom UnityEvent Event des ButtonClick Skripts aufgerufen.
+    /// </summary>
     public void reloadSelectedProtocolsfromAPI()
     {
         fileLoader.refreshSelectedProtocolsFromAPI(Utilities.generateURLForAPICall(baseurl, port, Utilities.GET_SELECTED_PROTOCOLS_PATH));
     }
 
-    private void updateVisAndDropDown()
+    /// <summary>
+    /// Methode erstellt den ersten Scatterplot und befüllt anschließend die Anzeigen und das Clipboard
+    /// </summary>
+    private void updateVisAndDisplays()
     {
-        //gets plotDataList from Singelton DataHolder
+        //Erhält die PlotData Liste über den DataVisProtocolHolder
         List<PlotData> plotDataList = DataVisProtocolHolder.GetInstance().getPlotDataList();
-        //create first Scatterplot to show. always first of the list.
+        Debug.Log(plotDataList.Count);
+        //Erstellt ersten Scatterplot in der Szene
         visualizer.createInitialScatterPlot(plotDataList[0]);
+        // Anfrage zur Schnittstelle für die HTML-Kommentardatei und anschließendes Anzeigen der Datei im Browserfenster
         string url = "localhost:4242/DataVis/protocols/" + plotDataList[0]._id + "/commentsDownload";
         fileLoader.getFileFromUrl(url);
-        //fills data for dropdown menu
+        // Befüllen des Whiteboardes
         whiteboardValueLoader.setClassification(plotDataList[0].Classification);
         whiteboardValueLoader.printValues();
+        // Befüllen des Clipboards mit allen Protokollen und deren Anzeigemöglichkeiten
         plotClipBoardController.fillPlotListwithList(plotDataList);
         plotClipBoardController.fillScatterplotAxisDropwdown(visualizer.GetPossibleScattersplots());
     }
+
+    /// <summary>
+    /// Methode zeigt den ersten Plot des im Clipboard selektierten Protokolls an. Anschließend werden alle Anzeigen befüllt.
+    /// Wird im ScatterplotDropDown UnityEvent aufgerufen.
+    /// </summary>
     public void loadSelectedScatterPlot()
     {
         int value = plotClipBoardController.getScatterPlotValue();
@@ -62,6 +78,10 @@ public class DataVisController : MonoBehaviour
         plotClipBoardController.fillScatterplotAxisDropwdown(visualizer.GetPossibleScattersplots());
     }
 
+    /// <summary>
+    /// Methode ändert den Scatterplot jenach Auswahl des Benutzers im DataDropDown
+    /// Wird im DataDropDown UnityEvent aufgerufen.
+    /// </summary>
     public void loadSelectedAxisScatterPlot()
     {
         int value = plotClipBoardController.getScatterPlotAxisValue();

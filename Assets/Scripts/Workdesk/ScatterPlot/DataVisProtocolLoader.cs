@@ -8,6 +8,9 @@ using Newtonsoft.Json.Linq;
 using SimpleWebBrowser;
 using System;
 
+/// <summary>
+/// Diese Klasse ist für das Laden eines Protokolls über die Schnittstelle oder einen Kommandozeilenbefehl zuständig
+/// </summary>
 public class DataVisProtocolLoader : MonoBehaviour
 {
     APIController aPIController;
@@ -18,6 +21,9 @@ public class DataVisProtocolLoader : MonoBehaviour
         aPIController = (new GameObject("APIController")).AddComponent<APIController>();
     }
 
+    /// <summary>
+    /// Diese Methode überprüft ob die anwendung mit einem Befehl über die CMD gestartet wurde. Falls nicht werden Protokolle von der Schnittstelle geladen
+    /// </summary>
     public void platformIndependentProtocolLoading(string url)
     {
 #if UNITY_Android
@@ -45,10 +51,14 @@ public class DataVisProtocolLoader : MonoBehaviour
 
 #endif
     }
+
     private void getProtocolsFromPath(string Path)
     {
 
     }
+    /// <summary>
+    /// Diese Methode liest jenach Dateiendung die Daten aus und speichert diese ab.
+    /// </summary>
     private void getProtocolFromPath(string path)
     {
         if (!(path is null))
@@ -89,6 +99,9 @@ public class DataVisProtocolLoader : MonoBehaviour
   
         } 
     }
+    /// <summary>
+    /// Methode speichert den Response der Schnittstelle in DataVisProtocol Objekte und legt diese im DataVisProtocolHolder ab
+    /// </summary>
     private void getSelectedProtocolsFromAPI(string url)
     {
         //DOING STUFF WITH API
@@ -111,7 +124,9 @@ public class DataVisProtocolLoader : MonoBehaviour
             }
         }));
     }
-
+    /// <summary>
+    /// Methode erhält die HTML-Kommentardatei von der Schnittstelle und zeigt diese im Browserfenster an
+    /// </summary>
     public void getFileFromUrl(string url)
     {
         //DOING STUFF WITH API
@@ -141,6 +156,9 @@ public class DataVisProtocolLoader : MonoBehaviour
         }));
     }
 
+    /// <summary>
+    /// Methode verarbeitet Response der Schnittstelle und speichert diese in DataVisProtokoll Objekte
+    /// </summary>
     public void refreshSelectedProtocolsFromAPI(string url)
     {
         //DOING STUFF WITH API

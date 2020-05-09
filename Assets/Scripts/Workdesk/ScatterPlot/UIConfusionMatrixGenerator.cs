@@ -5,6 +5,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Diese Klasse generiert die im Protokoll mitgegebene ConfusionMatrix
+/// </summary>
 public class UIConfusionMatrixGenerator : MonoBehaviour
 {
 
@@ -18,16 +21,15 @@ public class UIConfusionMatrixGenerator : MonoBehaviour
     public Color32 endColor;
     private float maxValue;
     private float minValue;
-    // Start is called before the first frame update
-    void Awake()
-    {
-        //matrixCellPrefab = (GameObject)Resources.Load("Prefabs/MatrixCell", typeof(GameObject));
-    }
 
+    /// <summary>
+    /// Diese Methode speichert die ConfusionMatrix Daten in die Klassenvariablen
+    /// </summary>
     public void setMatrixValues(DataVisConfusionMatrix confusionMatrix)
     {
         if (confusionMatrix.data.Length != 0)
         {
+            Debug.Log(confusionMatrix.data.Length);
             this.confusionMatrixData = confusionMatrix.data;
             this.labels = confusionMatrix.labels;
             ColorMap.setGradient(startColor, endColor);
@@ -42,6 +44,9 @@ public class UIConfusionMatrixGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Diese Methode erstellt mit den Daten der ConfusionMatrix die ConfusionMatrix für den Canvas des Whiteboards
+    /// </summary>
     public void printMatrixToCanvas()
     {
         int height = 0;
@@ -83,10 +88,13 @@ public class UIConfusionMatrixGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Diese Methode löscht alle Daten der ConfusionMatrix und löscht alle erstellten UI Elemente
+    /// </summary>
     public void delteCurrentmatrix()
     {
         confusionMatrixData = new float[0][];
-        labels.Clear();
+        labels = new List<string>();
         maxValue = 0;
         foreach (Transform child in matrixCanvas.transform)
         {

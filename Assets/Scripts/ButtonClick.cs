@@ -5,6 +5,10 @@ using HTC.UnityPlugin.ColliderEvent;
 using HTC.UnityPlugin.Vive;
 using UnityEngine.Events;
 
+
+/// <summary>
+/// Diese Klasse ist für das Betätigen des Buttons zum aktualisieren der ausgewählten Protokolle zuständig.
+/// </summary>
 public class ButtonClick : MonoBehaviour
     , IColliderEventHoverEnterHandler
     , IColliderEventHoverExitHandler

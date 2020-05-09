@@ -156,7 +156,9 @@ public class DataPoint : MonoBehaviour
 
         return data;
     }
-
+    /// <summary>
+    /// Diese Methode färbt den DataPoint falls er selektiert wurde ein.
+    /// </summary>
     public void colorSelected(CSVDataSource dataSource)
     {
         if (!(dataSource.selectedIndicies is null))
@@ -179,6 +181,9 @@ public class DataPoint : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Diese Methode färbt falls er bei der Klassifizierung fehelrhaft interpretiert worden ist ein.
+    /// </summary>
     public void colorError(CSVDataSource dataSource)
     {
         int columnindex = 0;
@@ -186,7 +191,7 @@ public class DataPoint : MonoBehaviour
         int j = 0;
         foreach (var column in dataSource)
         {
-            if (column.Identifier.Equals(dataSource.categorieColumn))
+            if (column.Identifier.Equals(dataSource.categoryColumn))
             {
                 columnindex = j;
             }
@@ -204,7 +209,7 @@ public class DataPoint : MonoBehaviour
                 }
                 else
                 {
-                    color = Color.black;
+                    color = Color.red;
                     renderer.material.color = color;
                 }
             }
@@ -227,7 +232,7 @@ public class DataPoint : MonoBehaviour
         int j = 0;
         foreach (var column in dataSource)
         {
-            if (column.Identifier.Equals(dataSource.categorieColumn))
+            if (column.Identifier.Equals(dataSource.categoryColumn))
             {
                 columnindex = j;
             }
@@ -238,7 +243,7 @@ public class DataPoint : MonoBehaviour
         Renderer renderer = this.GetComponent<Renderer>();
 
         //dynamic color marking
-        List<List<string>> categorieColors = dataSource.categorieColors;
+        List<List<string>> categorieColors = dataSource.categoryColors;
 
         if (categorieColors != null)
         {

@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Diese Klasse ist für das Färben der Confuison Matrix zuständing
+/// </summary>
 public class ColorMap: MonoBehaviour
 {
     static Gradient g = new Gradient();
     static bool gradientSet = false;
+
+    /// <summary>
+    /// Diese Methode erstellt mit den übergeben Farben einen Farbverlauf
+    /// </summary>
     public static void setGradient(Color32 startColor, Color32 endColor)
     {
         gradientSet = true;
@@ -21,7 +28,9 @@ public class ColorMap: MonoBehaviour
         gak[1].time = 1.0F;
         g.SetKeys(gck, gak);
     }
-
+    /// <summary>
+    /// Diese Methode gibt für den Wert einer COnfuisionMatrix Zelle eine Farbe, welche zwischen den beiden "Eckfarben" des Farbverlaufes liegt, zurück
+    /// </summary>
     public static Color getColorForValue(float value)
     {
         if (gradientSet)

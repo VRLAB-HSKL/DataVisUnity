@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Diese Singelton Klasse hält alle ausgewählten Protokolle
+/// </summary>
 public class DataVisProtocolHolder
 {
     private List<DataVisProtocol> dataVisProtocolList = new List<DataVisProtocol>();
@@ -30,6 +32,9 @@ public class DataVisProtocolHolder
         this.dataVisProtocolList = dataVisProtocolList;
     }
 
+    /// <summary>
+    /// Methode gibt eine Liste von PlotDaten zurück welche aus der Liste aller Protokolle erstellt wurde.
+    /// </summary>
     public List<PlotData> getPlotDataList()
     {
         List <PlotData> plotDataList = new List<PlotData>();

@@ -5,6 +5,10 @@ using HTC.UnityPlugin.ColliderEvent;
 using HTC.UnityPlugin.Vive;
 using UnityEngine.Events;
 
+/// <summary>
+/// Diese Klasse wird dem Scatterplot Prefab angeheftet. 
+/// Sie Überprüft ob sich ein Controller innerhalb des Scatterplots befindet und verwaltet die Interaktionsmöglichkeiten mit dem Plot
+/// </summary>
 public class InteractionController : MonoBehaviour
     , IColliderEventHoverEnterHandler
     , IColliderEventHoverExitHandler

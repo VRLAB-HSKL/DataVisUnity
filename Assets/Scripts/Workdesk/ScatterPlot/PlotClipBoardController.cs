@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Diese Klasse befüllt und verwaltet das Clipboard
+/// </summary>
 public class PlotClipBoardController : MonoBehaviour
 {
 
@@ -23,22 +26,30 @@ public class PlotClipBoardController : MonoBehaviour
     {
         
     }
-
+    /// <summary>
+    /// Diese Methode löscht alle Optionen des Scatterplotdropdowns
+    /// </summary>
     private void clearScatterPlotDropdown()
     {
         if (scatterplotDropdown.options.Count != 0) scatterplotDropdown.ClearOptions();
     }
-
+    /// <summary>
+    /// Diese Methode löscht alle Optionen des ScatterplotAxisdropdowns
+    /// </summary>
     private void clearScatterPlotAxisDropdown()
     {
         if (scatterplotAxisDropdown.options.Count != 0) scatterplotAxisDropdown.ClearOptions();
     }
-
+    /// <summary>
+    /// Diese Methode befüllt die PlotData Liste mit einem PlotDaten Objekt
+    /// </summary>
     public void fillPlotList(PlotData plotData)
     {
         dataFiles.Add(plotData);
     }
-
+    /// <summary>
+    /// Diese Methode befüllt die PlotData Liste mit einer PlotData Liste
+    /// </summary>
     public void fillPlotListwithList(List<PlotData> list)
     {
         dataFiles.Clear();
@@ -48,7 +59,9 @@ public class PlotClipBoardController : MonoBehaviour
         }
         fillScatterPlotDropwdown();
     }
-
+    /// <summary>
+    /// Diese Methode befüllt die Options des ScatterplotDropdown mit der PlotData Liste
+    /// </summary>
     public void fillScatterPlotDropwdown()
     {
         //Clear Dropdown
@@ -60,7 +73,9 @@ public class PlotClipBoardController : MonoBehaviour
         }
         scatterplotDropdown.RefreshShownValue();
     }
-
+    /// <summary>
+    /// Diese Methode befüllt die Options des ScatterplotAxisDropdown mit der PlotData Liste
+    /// </summary>
     public void fillScatterplotAxisDropwdown(string[] possibleAxisPlots)
     {
         //Clear Axis Dropdown
@@ -72,30 +87,26 @@ public class PlotClipBoardController : MonoBehaviour
         scatterplotAxisDropdown.value = 0;
         scatterplotAxisDropdown.RefreshShownValue();
     }
-
-    public void changeScatterPlotDropwdownValue(int value)
-    {
-
-    }
-
-    public void changeScatterplotAxisDropwdownValue(int value)
-    {
-
-    }
-
+    /// <summary>
+    /// Diese Methode gibt den Value des ScatterplotDropdowns zurück
+    /// </summary>
     public int getScatterPlotValue()
     {
             Debug.Log("switchScatterplot():  " + scatterplotDropdown.value);
             return scatterplotDropdown.value;
     }
-
+    /// <summary>
+    /// Diese Methode gibt den Value des ScatterplotAxisDropdowns zurück
+    /// </summary>
     public int getScatterPlotAxisValue()
     {
         Debug.Log("switchScatterplot():  " + scatterplotAxisDropdown.value);
         return scatterplotAxisDropdown.value;
     }
 
-
+    /// <summary>
+    /// Gibt für den Value der Option das jeweilige PlotData Objekt zurück.
+    /// </summary>
     public PlotData getPlotDataByDropwDownValue(int value)
     {
         PlotData data = dataFiles[value];

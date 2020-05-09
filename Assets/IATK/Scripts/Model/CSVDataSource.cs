@@ -21,8 +21,8 @@ namespace IATK
         public string selectionColor;
         public List<string> results;
         public string resultColor;
-        public List<List<string>> categorieColors;
-        public string categorieColumn;
+        public List<List<string>> categoryColors;
+        public string categoryColumn;
 
         [Tooltip("Text asset containing the data")]
         public TextAsset data;

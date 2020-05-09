@@ -127,16 +127,15 @@ public class Visualizer : MonoBehaviour
     }
 
     /// <summary>
-    /// Lädt die ausgewählte CSV-Datei.
+    /// Lädt das ausgewählte PlotData Objekt.
     /// </summary>
-    /// <param name="dataFile"></param>
     public void LoadDataWithPlotData(PlotData plotData)
     {
         if (null != plotData.CsvAsset)
         {
             dataSource.load(plotData.CsvAsset.text, null);
-            dataSource.categorieColors = plotData.CategorieColors;
-            dataSource.categorieColumn = plotData.CategorieColumn;
+            dataSource.categoryColors = plotData.CategorieColors;
+            dataSource.categoryColumn = plotData.CategorieColumn;
             possibleScatterplots = CalculatePossibleScatterplots();
             //Debug.Log("Loaded CSV file from: " + dataFile.name);
             fillClipboard(plotData.CsvAsset.name);
@@ -217,7 +216,9 @@ public class Visualizer : MonoBehaviour
 
         if (!bigScatterplot) fillDataDropdown();
     }
-    //SEB
+    /// <summary>
+    /// Erstellt einen Scatterplot mit Daten der Schnittstelle und lässt ihn auf dem Tisch anzeigen.
+    /// </summary>
     public void createInitialScatterPlot(PlotData plotData)
     {
         selectedScatterplot = 0;
