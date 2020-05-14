@@ -19,6 +19,8 @@ public class DataVisProtocolHolder
         return _instance;
     }
 
+
+
     public void addProtocolToList(DataVisProtocol protocol)
     {
         dataVisProtocolList.Add(protocol);

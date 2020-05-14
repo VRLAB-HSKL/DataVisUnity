@@ -3,8 +3,9 @@
 [Oo]bj/
 [Bb]ild/
 [Bb]uilds/
+
 Assets/AssetStoreTools*
-Assets/SimpleWebBrowser/
+Assets/HTC.UnityPlugin
 Build/
 
 # Visual Studio cache directory

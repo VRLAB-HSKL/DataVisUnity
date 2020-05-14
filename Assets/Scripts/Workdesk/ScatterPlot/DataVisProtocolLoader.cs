@@ -75,18 +75,15 @@ public class DataVisProtocolLoader : MonoBehaviour
                 TextAsset asset = new TextAsset(fileContent);
                 //create plotData object for holding the csvdata
                 PlotData plotData = new PlotData(fileName, asset);
-                //returns created plot
- 
+                
+                //TODO
+
             }
             // case own json structure
             else if (Path.GetExtension(path).Equals(".json"))
             {
                 DataVisProtocol protocol = JsonConvert.DeserializeObject<DataVisProtocol>(fileContent);
-                TextAsset csvAsset = new TextAsset(protocol.dataset.ToString());
-                DataVisSelection selection = protocol.selection;
-                PlotData plotData = new PlotData(fileName,csvAsset,selection);
-                plotData.CategorieColors = protocol.colors.colorList;
-                plotData.CategorieColumn = protocol.colors.column;
+                DataVisProtocolHolder.GetInstance().addProtocolToList(protocol);
             }
             //default if no condition is true
             else
@@ -140,14 +137,15 @@ public class DataVisProtocolLoader : MonoBehaviour
             {
                 //Debug.Log(req.downloadHandler.text);
                 //JUST PUT DATA SOMEWHERE
-                string foldername = "Kommentare";
+                //string foldername = "Kommentare";
                 string name = "test";
                 string extension = ".html";
-                var urltest = Application.persistentDataPath + "/" + foldername + "/" + name + extension;
-                var path = "file:///" + urltest;
+                Debug.Log(Application.persistentDataPath);
+                var fileurl = Application.persistentDataPath + "/" + name + extension;
+                var path = "file:///" + fileurl;
                 //FileStream file = File.Open(urltest, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                File.WriteAllText(urltest, String.Empty);
-                TextWriter tw = new StreamWriter(urltest, true);
+                File.WriteAllText(fileurl, String.Empty);
+                TextWriter tw = new StreamWriter(fileurl, true);
                 tw.WriteLine(req.downloadHandler.text);
                 tw.Close();
                 WebBrowser browser = GameObject.Find("InworldBrowser").GetComponent<WebBrowser>();
